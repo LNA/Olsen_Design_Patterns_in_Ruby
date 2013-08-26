@@ -11,3 +11,7 @@
 
 # The decorator incorporates a lot of delegation.  We can fix this by using the
 # forwardable module.
+
+# Dynamic alternatives to the decorator include:
+# => wrapping methods and
+# => decorating with modules
