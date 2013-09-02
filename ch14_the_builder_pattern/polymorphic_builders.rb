@@ -1,4 +1,4 @@
-# Lets say we want to buid two types of computers: 
+# Lets say we want to build two types of computers: 
 # desktop and laptop.
 
 class DesktopComputer < Computer 
@@ -20,7 +20,7 @@ end
 # The abstract base builder (class ComputerBuilder) deals with the details that are
 # common to the two kinds of computers.  Then we create a
 # DesktopBuilder to create instances of desktop computers
-# and a Laptopbuilder to create instances of laptop computers.
+# and a LaptopBuilder to create instances of laptop computers.
 
 class ComputerBuilder
 	attr_reader :computers
@@ -54,3 +54,25 @@ class DesktopBuilder < ComputerBuilder
 	def add_hard_disk(size_in_mb)
 		@computer.drives << Drive.new(:hard_disk, size_in_mb, true)
 	end
+end
+
+class LaptopBuilder < ComputerBuilder
+	def initialize
+		@computer = LaptopComputer.new
+	end
+
+	def display=(display)
+		raise "laptop display must be lcd" unless display == :lcd
+	end
+	def add_cd(writer=false)
+		@computer.drives << LaptopDrive.new(:cd, 760, writer)
+	end
+
+	def add_dvd(writer=false)
+		@computer.drives << LaptopDrive.new(:dvd, 4000, writer)
+	end
+
+	def add_hard_disk(size_in_mb)
+		@computer.drives << LaptopDrive.new(:hard_disk, size_in_mb, true)
+	end
+end
