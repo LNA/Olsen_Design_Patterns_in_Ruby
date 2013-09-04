@@ -1,4 +1,5 @@
 # This design pattern is to be used when the best way to solve a problem is to invent a new language.  
+#
 
 # Lets say we need to evaluate the following statement:
 
